@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<people xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="people.xsd">
+
+    <person id="1">
+        <firstname>George R. R.</firstname>
+        <lastname>Martin</lastname>
+        <birthdate>1984-09-20T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>97</weight>
+            <height>1.74</height>
+            <bmi>32.04</bmi>
+        </healthprofile>
+    </person>
+    <person id="2">
+        <firstname>Eric</firstname>
+        <lastname>Butcher</lastname>
+        <birthdate>1984-09-20T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>104</weight>
+            <height>1.85</height>
+            <bmi>30.39</bmi>
+        </healthprofile>
+    </person>
+    <person id="3">
+        <firstname>Claude</firstname>
+        <lastname>Appletree</lastname>
+        <birthdate>1949-05-27T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>45</weight>
+            <height>1.66</height>
+            <bmi>16.33</bmi>
+        </healthprofile>
+    </person>
+    <person id="4">
+        <firstname>Susan</firstname>
+        <lastname>Tailor</lastname>
+        <birthdate>1951-06-12T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>111</weight>
+            <height>1.96</height>
+            <bmi>28.89</bmi>
+        </healthprofile>
+    </person>
+    <person id="5">
+        <firstname>Nina</firstname>
+        <lastname>Livintown</lastname>
+        <birthdate>1957-09-29T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>100</weight>
+            <height>1.87</height>
+            <bmi>28.6</bmi>
+        </healthprofile>
+    </person>
+    <person id="6">
+        <firstname>Evelyn</firstname>
+        <lastname>Sailer</lastname>
+        <birthdate>1937-11-07T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>92</weight>
+            <height>1.94</height>
+            <bmi>24.44</bmi>
+        </healthprofile>
+    </person>
+    <person id="7">
+        <firstname>Barry</firstname>
+        <lastname>Alwayslate</lastname>
+        <birthdate>1936-03-08T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>109</weight>
+            <height>2.0</height>
+            <bmi>27.25</bmi>
+        </healthprofile>
+    </person>
+    <person id="8">
+        <firstname>Claire</firstname>
+        <lastname>Michigan</lastname>
+        <birthdate>1945-08-08T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>90</weight>
+            <height>1.65</height>
+            <bmi>33.06</bmi>
+        </healthprofile>
+    </person>
+    <person id="9">
+        <firstname>Louis</firstname>
+        <lastname>Beacon</lastname>
+        <birthdate>1967-05-03T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>66</weight>
+            <height>1.64</height>
+            <bmi>24.54</bmi>
+        </healthprofile>
+    </person>
+    <person id="10">
+        <firstname>Andrew</firstname>
+        <lastname>Greengrocer</lastname>
+        <birthdate>1973-09-24T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>60</weight>
+            <height>1.74</height>
+            <bmi>19.82</bmi>
+        </healthprofile>
+    </person>
+    <person id="11">
+        <firstname>Vera</firstname>
+        <lastname>Dallas</lastname>
+        <birthdate>1984-09-20T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>98</weight>
+            <height>1.72</height>
+            <bmi>33.13</bmi>
+        </healthprofile>
+    </person>
+    <person id="12">
+        <firstname>Hillary</firstname>
+        <lastname>Leopard</lastname>
+        <birthdate>1972-07-14T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>111</weight>
+            <height>1.9</height>
+            <bmi>30.75</bmi>
+        </healthprofile>
+    </person>
+    <person id="13">
+        <firstname>Daniel</firstname>
+        <lastname>Dandelion</lastname>
+        <birthdate>1984-09-20T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>136</weight>
+            <height>1.9</height>
+            <bmi>37.67</bmi>
+        </healthprofile>
+    </person>
+    <person id="14">
+        <firstname>Rosaleen</firstname>
+        <lastname>Spicysoup</lastname>
+        <birthdate>1978-01-05T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>78</weight>
+            <height>1.82</height>
+            <bmi>23.55</bmi>
+        </healthprofile>
+    </person>
+    <person id="15">
+        <firstname>Keenan</firstname>
+        <lastname>Hedgehog</lastname>
+        <birthdate>1979-04-03T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>110</weight>
+            <height>1.77</height>
+            <bmi>35.11</bmi>
+        </healthprofile>
+    </person>
+    <person id="16">
+        <firstname>Dorothy</firstname>
+        <lastname>Rainbow</lastname>
+        <birthdate>1919-12-25T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>100</weight>
+            <height>1.94</height>
+            <bmi>26.57</bmi>
+        </healthprofile>
+    </person>
+    <person id="17">
+        <firstname>Brenda</firstname>
+        <lastname>Cook</lastname>
+        <birthdate>1921-01-20T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>89</weight>
+            <height>1.88</height>
+            <bmi>25.18</bmi>
+        </healthprofile>
+    </person>
+    <person id="18">
+        <firstname>Guglielmo</firstname>
+        <lastname>Spark</lastname>
+        <birthdate>1952-05-06T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>111</weight>
+            <height>1.87</height>
+            <bmi>31.74</bmi>
+        </healthprofile>
+    </person>
+    <person id="19">
+        <firstname>Peter</firstname>
+        <lastname>Oversea</lastname>
+        <birthdate>1934-01-04T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>70</weight>
+            <height>1.81</height>
+            <bmi>21.37</bmi>
+        </healthprofile>
+    </person>
+    <person id="20">
+        <firstname>Olivia</firstname>
+        <lastname>Clifftop</lastname>
+        <birthdate>1975-08-27T18:00:00.000+02:00</birthdate>
+        <healthprofile>
+            <lastupdate>2014-09-20T18:00:00.000+02:00</lastupdate>
+            <weight>75</weight>
+            <height>1.86</height>
+            <bmi>21.68</bmi>
+        </healthprofile>
+    </person>
+</people>

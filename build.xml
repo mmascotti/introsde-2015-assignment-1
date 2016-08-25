@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file has been adapted from the build file of lab 3-->
+<project name="assignment1" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<!-- PART 1: Ivy properties, download, installation and configuration -->
+	<property name="ivy.install.version" value="2.4.0-rc1" />
+	<property name="ivy.jar.dir" value="${basedir}/ivy" />
+	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
+
+	<!-- this targe will donwload ivy.jar if its inot in the "ivy" folder yet -->
+	<target name="download-ivy" unless="skip.download">
+		<mkdir dir="${ivy.jar.dir}"/>
+		<!-- download Ivy from web site so that it can be used even without any special installation -->
+		<echo message="installing ivy..."/>
+		<get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar.file}" usetimestamp="true"/>
+	</target>
+
+	<!-- installs ivy -->
+	<target name="install-ivy" depends="download-ivy" description="--> install ivy">
+		<path id="ivy.lib.path">
+			<fileset dir="${ivy.jar.dir}" includes="*.jar"/>
+		</path>
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+	</target>
+
+	<!-- PART 2: General properties definitions -->
+	<property name="build.dir" value="build" />
+	<property name="src.dir" value="src" />
+	<property name="lib.dir" value="lib" />
+	<property name="xjc.package" value="data" />
+
+	<!-- target: resolve downloads the dependencies to your lib folder -->
+	<target name="resolve" depends="install-ivy" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve pattern="${lib.dir}/[artifact]-[type]-[revision].[ext]"/>
+	</target>
+
+	<!-- paths where ivy libraries will be downloaded, use them as classpathref in your compilation and running tasks  -->
+	<path id="lib.path.id">
+		<fileset dir="${lib.dir}" />
+	</path>
+
+	<path id="run.path.id">
+		<path refid="lib.path.id" />
+		<fileset dir="${build.dir}">
+			<include name="*.class" />
+			<include name="**/*.class" />
+			<exclude name="**/*Test*" />
+		</fileset>
+	</path>
+
+	<!-- PART 3: compilation and execution targets for this session -->
+	<target name="init" depends="install-ivy, resolve">
+		<echo message="Init has been called" />
+		<mkdir dir="${build.dir}" />
+		<echo message="${build.dir} has been created" />
+	</target>
+
+	<target name="clean">
+		<echo message="Clean has been called" />
+		<delete dir="${build.dir}" />
+		<echo message="${build.dir} has been deleted" />
+		<delete dir="${src.dir}/${xjc.package}" />
+		<echo message="${src.dir}/${xjc.package} has been deleted" />
+		<!-- delete file="catalog.xml" />
+		<echo message="catalog.xml has been deleted" / -->
+	</target>
+
+	<target name="generate" depends="init">
+		<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask" classpathref="lib.path.id">
+		</taskdef>
+		<xjc schema="people.xsd" destdir="${src.dir}" package="${xjc.package}" />
+	</target>
+
+	<target name="compile" depends="init, generate">
+		<echo message="Compile target has been called" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path.id" includeAntRuntime="false">
+		</javac>
+		<copy todir="${build.dir}" overwrite="true">
+			<fileset dir="${src.dir}">
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Targets for testing the application -->
+	<property name="sampledatafile" value="people.xml" />
+	<property name="xmlfile" value="test.xml" />
+	<property name="jsonfile" value="test.json" />
+	
+	<target name="execute.evaluation"
+		depends="compile, 
+				lab3instr2.printAllpeople,
+				lab3instr3.printPersonId5,
+				lab3instr3.printPersonsWeightGreater90,
+				lab4instr2.marshalltoXML,
+				lab4instr2.unmarshallfromXML,
+				lab4instr3.marshalltoJSON">
+		
+	</target>
+
+	<target name="lab3instr2.printAllpeople">
+		<echo message="Lab 03 instruction 2: Printing all people from the xml file ${xmlfile}" />
+		<java classname="test.HealthProfileReader" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="print_people"/>
+			<arg value="${xmlfile}"/>
+		</java>
+	</target>
+
+	<target name="lab3instr3.printPersonId5">
+		<echo message="Lab 03 instruction 3: Printing healthprofile of person with id=5" />
+		<java classname="test.HealthProfileReader" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="print_profile" />
+			<arg value="5" />
+		</java>
+	</target>
+
+	<target name="lab3instr3.printPersonsWeightGreater90">
+		<echo message="Lab 03 instruction 3: Printing persons having weight &gt; 90" />
+		<java classname="test.HealthProfileReader" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="filter_weight"/>
+			<arg value=">"/>
+			<arg value="90"/>
+		</java>
+	</target>
+
+	<target name="lab4instr2.marshalltoXML">
+		<echo message="Lab 04 instruction 2: Writing 3 sample persons in the xml file ${xmlfile}" />
+		<java classname="test.TestMarshallUtilities" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="marshallXML"/>
+			<arg value="${xmlfile}"/>
+		</java>
+	</target>
+
+	<target name="lab4instr2.unmarshallfromXML">
+		<echo message="Lab 04 instruction 2: Reading the persons from the xml file ${sampledatafile}" />
+		<java classname="test.TestMarshallUtilities" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="unmarshallXML"/>
+			<arg value="${sampledatafile}"/>
+		</java>
+	</target>
+
+	<target name="lab4instr3.marshalltoJSON">
+		<echo message="Lab 04 instruction 3: Writing 3 sample persons in the json file ${jsonfile}" />
+		<java classname="test.TestMarshallUtilities" classpath="${build.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="marshallJSON"/>
+			<arg value="${jsonfile}"/>
+		</java>
+	</target>
+
+</project>

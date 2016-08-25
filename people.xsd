@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="people">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="person" type="person" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="person">
+		<xs:sequence>
+			<xs:element name="firstname" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="lastname" type="xs:string" maxOccurs="1" minOccurs="1" />
+			<xs:element name="birthdate" type="xs:dateTime" maxOccurs="1"  minOccurs="1" />
+			<xs:element name="healthprofile" type="healthprofile"	maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:long" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="healthprofile">
+		<xs:sequence>
+			<xs:element name="lastupdate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="weight" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="height" type="xs:double" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="bmi" type="xs:double" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
