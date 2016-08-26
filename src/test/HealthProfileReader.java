@@ -128,12 +128,14 @@ public class HealthProfileReader {
 	 * @return the weight or 'null'
 	 */
 	private static Integer getWeigth(Long personId) {
-		String expr_weight = "/people/person[@id='5']/healthprofile/weight";
+		String expr_weight = "/people/person[@id='" + personId + "']/healthprofile/weight";
 		
 		try {
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			XPathExpression expr = xpath.compile(expr_weight);
 			String w = (String) expr.evaluate(database, XPathConstants.STRING);
+			if (w.isEmpty())
+				return null;
 			Integer ret =  Integer.valueOf(w);
 			return ret;
 		} catch (XPathExpressionException e) {
@@ -155,7 +157,10 @@ public class HealthProfileReader {
 		try {
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			XPathExpression expr = xpath.compile(expr_weight);
-			Double ret = (Double) expr.evaluate(database, XPathConstants.NUMBER);
+			String h = (String) expr.evaluate(database, XPathConstants.STRING);
+			if (h.isEmpty())
+				return null;
+			Double ret = Double.parseDouble(h);
 			return ret;
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
@@ -356,6 +361,9 @@ public class HealthProfileReader {
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			XPathExpression expr = xpath.compile(person_expr);
 			Node person_node = (Node) expr.evaluate(database, XPathConstants.NODE);
+			
+			if (person_node == null)
+				return;					
 			
 			printHealthProfile(person_node);			
 		} catch (XPathExpressionException e) {
